@@ -42,7 +42,7 @@ const loginFeature = createSlice({
     }
 });
 
-export const getPublicKey = createAsyncThunk('/auth/{username}', async () => {
+export const getPublicKey = createAsyncThunk('/auth/username', async (username) => {
     const response = await http.get(`auth/${username}/key`)
     return response.data
 })
