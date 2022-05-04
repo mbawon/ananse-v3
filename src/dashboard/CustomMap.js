@@ -22,5 +22,5 @@ const CustomMap = ({google})=>{
 }
 
 export default GoogleApiWrapper({
-    apiKey:""
+    apiKey:"AIzaSyBb84THY4whzRfym83HfIdwjGhI-Rwy-rI"
 })(CustomMap)
