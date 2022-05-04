@@ -42,22 +42,22 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault()
 
+        try {
             const { key } = await axios.get(`https://ananse.internal.vodafone.com/api/v2/auth/${credential.username}/key`)
 
-
             const genPass = Math.random().toString(36).slice(2, 15)
-            if (key) {
-                const encryptedAES = AES.encrypt(genPass, key)
-                const loginCredentials = AES.encrypt(credential, encryptedAES)
-                dispatch(login({ username:credential.username, key: encryptedAES, data: loginCredentials }))
-            } else {
-                setKeyError("Login failed. Try again")
-                console.log("error");
-                const timmer = setTimeout(() => {
-                    dispatch(resetStatus())
-                    clearTimeout(timmer)
-                }, 1000);
-            }
+
+            const encryptedAES = AES.encrypt(genPass, key)
+            const loginCredentials = AES.encrypt(credential, encryptedAES)
+            dispatch(login({ username:credential.username, key: encryptedAES, data: loginCredentials }))
+
+        } catch (error) {
+            setKeyError("Login failed. Try again")        
+            const timmer = setTimeout(() => {
+                setKeyError("")
+                clearTimeout(timmer)
+            }, 3000)    
+        }
     }
 
     const renderLogin = () => {
