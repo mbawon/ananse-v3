@@ -1,5 +1,5 @@
 import axios from "axios";
-// import TokenService from "./services/token.service";
+import TokenService from "./services/token.service";
 
 let baseURL = ""
 
@@ -13,18 +13,18 @@ const http = axios.create({
   baseURL: baseURL,
 });
 
-// http.interceptors.request.use(
-//   (config) => {
-//     const token = TokenService.getLocalAccessToken();
-//     if (token) {
-//       config.headers["x-access-token"] = token;
-//     }
-//     return config;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   }
-// );
+http.interceptors.request.use(
+  (config) => {
+    const token = TokenService.getLocalAccessToken();
+    if (token) {
+      config.headers["Authorization"] = token;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 // http.interceptors.response.use(
 //   (res) => {

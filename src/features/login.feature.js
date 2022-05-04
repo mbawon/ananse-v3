@@ -48,9 +48,9 @@ export const getPublicKey = createAsyncThunk('/auth/username', async (username) 
 })
 
 export const login = createAsyncThunk('/login', async (credential) => {
-    console.log("Login credentials>>>>",credential);
+    // console.log("Login credentials>>>>",credential);
     const response = await http.post('login', credential)
-    console.log("Response>>>", response.data);
+    // console.log("Response>>>", response.data);
     return response.data
 })
 

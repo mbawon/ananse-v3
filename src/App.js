@@ -29,8 +29,8 @@ function App() {
 }
 
 function RequireAuth({children}) {
-  let auth = useSelector(selectUser);
-  // let auth = false;
+  // let auth = useSelector(selectUser);
+  let auth = true;
 
   let location = useLocation();
 
@@ -42,8 +42,8 @@ function RequireAuth({children}) {
 }
 
 function LoginAuth({children}) {
-  let auth = useSelector(selectUser);
-  // let auth = false;
+  // let auth = useSelector(selectUser);
+  let auth = true;
 
   let location = useLocation();
 
