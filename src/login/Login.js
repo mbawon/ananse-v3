@@ -4,22 +4,24 @@ import AES from "crypto-js/aes";
 import styles from './login.module.css'
 import { login, resetStatus, selectKey } from '../features/login.feature';
 import logo from '../assets/images/vodafone.png'
+import axios from 'axios';
 
 
 const Login = () => {
     //state
     const [showPassword, setShowPassword] = useState(false)
     const [credential, setCredential] = useState({})
+    const [ keyError, setKeyError ] = useState("")
 
-    const keyStatus = useSelector(state => state.login?.keyStatus)
-    const keyError = useSelector(state => state.login?.keyError)
+    // const keyStatus = useSelector(state => state.login?.keyStatus)
+    // const keyError = useSelector(state => state.login?.keyError)
 
     const loginStatus = useSelector(state => state.login?.status)
     const loginError = useSelector(state => state.login?.loginError)
 
     const dispatch = useDispatch()
 
-    const publicKey = useSelector(selectKey)
+    // const publicKey = useSelector(selectKey)
 
     //functions
 
@@ -37,23 +39,23 @@ const Login = () => {
         setShowPassword(!showPassword)
     }
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault()
+
+        const { key } = await axios.get(`https://ananse.internal.vodafone.com/api/v2/auth/${credential.username}/key`)
+
+
         const genPass = Math.random().toString(36).slice(2, 15)
-        if (keyStatus === "succeeded") {
-            const encryptedAES = AES.encrypt(genPass, publicKey)
+        if (key) {
+            const encryptedAES = AES.encrypt(genPass, key)
             const loginCredentials = AES.encrypt(credential, encryptedAES)
             dispatch(login({ username:credential.username, key: encryptedAES, data: loginCredentials }))
         } else {
+            setKeyError("Login failed. Try again")
             const timmer = setTimeout(() => {
                 dispatch(resetStatus())
                 clearTimeout(timmer)
             }, 1000);
-            if (keyError) {
-                console.log("Could not retrieve public key.");
-            } else {
-                console.log("Login error...")
-            }
         }
     }
 
