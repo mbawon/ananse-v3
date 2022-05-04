@@ -42,27 +42,28 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault()
 
-        const { key } = await axios.get(`https://ananse.internal.vodafone.com/api/v2/auth/${credential.username}/key`)
+            const { key } = await axios.get(`https://ananse.internal.vodafone.com/api/v2/auth/${credential.username}/key`)
 
 
-        const genPass = Math.random().toString(36).slice(2, 15)
-        if (key) {
-            const encryptedAES = AES.encrypt(genPass, key)
-            const loginCredentials = AES.encrypt(credential, encryptedAES)
-            dispatch(login({ username:credential.username, key: encryptedAES, data: loginCredentials }))
-        } else {
-            setKeyError("Login failed. Try again")
-            const timmer = setTimeout(() => {
-                dispatch(resetStatus())
-                clearTimeout(timmer)
-            }, 1000);
-        }
+            const genPass = Math.random().toString(36).slice(2, 15)
+            if (key) {
+                const encryptedAES = AES.encrypt(genPass, key)
+                const loginCredentials = AES.encrypt(credential, encryptedAES)
+                dispatch(login({ username:credential.username, key: encryptedAES, data: loginCredentials }))
+            } else {
+                setKeyError("Login failed. Try again")
+                console.log("error");
+                const timmer = setTimeout(() => {
+                    dispatch(resetStatus())
+                    clearTimeout(timmer)
+                }, 1000);
+            }
     }
 
     const renderLogin = () => {
         return (
             <form onSubmit={handleLogin} className={styles.login_form}>
-                {loginError === "failed" && keyError === "failed" &&
+                {loginError === "failed" || keyError &&
                     <div className='errorResponse'>
                         Login Failed: Your user ID or password may be incorrect
                     </div>
