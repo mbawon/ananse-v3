@@ -1,5 +1,7 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { selectUser } from './features/login.feature';
 import Layout from './layout/Layout';
 import Login from './login/Login';
 
@@ -27,8 +29,8 @@ function App() {
 }
 
 function RequireAuth({children}) {
-  // let auth = useSelector(selectLoggedIn);
-  let auth = false;
+  let auth = useSelector(selectUser);
+  // let auth = false;
 
   let location = useLocation();
 
@@ -40,8 +42,8 @@ function RequireAuth({children}) {
 }
 
 function LoginAuth({children}) {
-  // let auth = useSelector(selectLoggedIn);
-  let auth = false;
+  let auth = useSelector(selectUser);
+  // let auth = false;
 
   let location = useLocation();
 

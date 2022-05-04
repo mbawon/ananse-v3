@@ -93,7 +93,7 @@ const Login = () => {
             <div className={styles.login_right}>
                 <img src={logo} alt="logo" width="70" style={{margin:"auto auto 0 auto"}} />
                 <br />
-                <h1 className={styles.login_header}>Login</h1>
+                <h1 className={styles.login_header}>Ananse Login</h1>
                 <br />
 
                 {renderLogin()}
