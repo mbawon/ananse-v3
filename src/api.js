@@ -4,9 +4,9 @@ import axios from "axios";
 let baseURL = ""
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  baseURL = "http://localhost:7000/api/v1/"
+  baseURL = "https://ananse.internal.vodafone.com/api/v2/"
 } else {
-  baseURL = "http://localhost:7000/api/v1/"
+  baseURL = "https://ananse.internal.vodafone.com/api/v2/"
 }
 
 const http = axios.create({
