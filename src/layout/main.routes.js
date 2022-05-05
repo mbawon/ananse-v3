@@ -1,4 +1,9 @@
+import Areas from "../area/Area"
 import Dashboard from "../dashboard/Dashboard"
+import Regions from "../region/Region"
+import Reports from "../report/Report"
+import Users from "../user/User"
+import Zones from "../zone/Zone"
 
 const mainRoutes = [
     {
@@ -7,34 +12,29 @@ const mainRoutes = [
         element: <Dashboard />
     },
     {
-        name: "Teams",
-        path: "/home",
-        element: <Dashboard />
-    },
-    {
         name: "Reports",
         path: "/reports",
-        element: <Dashboard />
+        element: <Reports />
     },
     {
         name: "Regions",
         path: "/regions",
-        element: <Dashboard />
+        element: <Regions />
     },
     {
         name: "Zones",
         path: "/zones",
-        element: <Dashboard />
+        element: <Zones />
     },
     {
         name: "Areas",
         path: "/areas",
-        element: <Dashboard />
+        element: <Areas />
     },
     {
         name: "Users",
         path: "/users",
-        element: <Dashboard />
+        element: <Users />
     }
 ]
 

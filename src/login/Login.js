@@ -43,7 +43,7 @@ const Login = () => {
         e.preventDefault()
 
         try {
-            const { key } = await axios.get(`https://ananse.internal.vodafone.com/api/v2/auth/${credential.username}/key`)
+            const { key } = await axios.get(`https://ananse.internal.vodafone.com/service/api/v2/auth/${credential.username}/key`)
 
             const genPass = Math.random().toString(36).slice(2, 15)
 

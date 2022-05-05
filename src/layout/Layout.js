@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './layout.module.css'
 import logo from '../assets/images/logo-big.png'
-import Dashboard from '../dashboard/Dashboard'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Route, Routes } from 'react-router-dom'
 import appRoutes from './main.routes'
 
 const Layout = () => {
@@ -33,7 +32,13 @@ const Layout = () => {
                     </ul>
                 </aside>
                 <section>
-                    <Dashboard />
+                    <Routes>
+                        {
+                            appRoutes?.map((appR,index)=>{
+                                return <Route key={index} path={appR.path} element={appR.element} />
+                            })
+                        }
+                    </Routes>
                 </section>
             </div>
         </div>

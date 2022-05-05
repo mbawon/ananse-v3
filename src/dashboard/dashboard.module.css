@@ -6,7 +6,8 @@
 }
 .searchInput1{
     margin-left: auto;
-    width: 200;
+    height: 29px;
+    width: 200px;
     outline: none;
     border: 1px solid #ccc;
     background-color: white;
@@ -15,9 +16,9 @@
 
 .searchInput2{
     margin-left: 15px;
-    margin-right: 15px;
     color: black;
-    width: 200;
+    height: 29px;
+    width: 200px;
     outline: none;
     border: 1px solid #ccc;
     background-color: white;
@@ -25,7 +26,8 @@
 }
 .searchBtn{ 
     align-self: center;
-    margin-left: 15;
+    height: 29px;
+    margin-left: 15px;
     cursor: pointer;
     color: white;
     background-color: red;

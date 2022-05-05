@@ -4,9 +4,9 @@ import TokenService from "./services/token.service";
 let baseURL = ""
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  baseURL = "https://ananse.internal.vodafone.com/api/v2/"
+  baseURL = "https://ananse.internal.vodafone.com/service/api/v2/"
 } else {
-  baseURL = "https://ananse.internal.vodafone.com/api/v2/"
+  baseURL = "https://ananse.internal.vodafone.com/service/api/v2/"
 }
 
 const http = axios.create({

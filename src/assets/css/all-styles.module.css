@@ -12,19 +12,38 @@
 .page__content{
     position: relative;
     height: 80%;
+    margin: 10px;
+    border: 10px solid #eee;
     overflow:hidden;
 }
 .page__footer{
     display: flex;
     height: 10%;
-    padding: 15px 10px;
+    padding: 20px 10px 15px 10;
+    border-top: 2px solid #ccc;
     border-bottom: 1px solid #ccc;
     background-color: #eee;
 }
 .page__footer2{
     display: none;
 }
+
+.tableHeader{
+    height: 50px;
+    display: flex;
+    align-items: flex-start;
+    background-color: #eee;
+    padding: 15px;
+}
 @media (max-width: 767px) {
+    .page__header{
+        background-color: red;
+        color: white;
+    }
+    .page__content{
+        margin: 0;
+        border:none
+    }
     .page__footer{
         display: none;
     }
@@ -34,19 +53,13 @@
         flex-direction: row;
         justify-content: space-around;
         height: 10%;
-        padding: 15px 10px;
-        border-bottom: 1px solid #ccc;
+        padding: 20px 10px;
+        border-top: 5px solid #fff;
+        border-bottom: 1px solid #fff;
         background-color: #eee;
     }
-    /* .page__header{
-        display: none;
-    } */
     .pageTitle{
         display: none;
-        /* margin-left: 10px; */
     }
-    /* .page__content{
-        height: 90%;
-    } */
 }
 
