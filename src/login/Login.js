@@ -44,7 +44,7 @@ const Login = () => {
 
         try {
             const { key } = await axios.get(`https://ananse.internal.vodafone.com/service/api/v2/auth/${credential.username}/key`)
-
+            console.log(key)
             const genPass = Math.random().toString(36).slice(2, 15)
 
             const encryptedAES = AES.encrypt(genPass, key)
