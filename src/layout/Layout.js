@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './layout.module.css'
 import logo from '../assets/images/logo-big.png'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import appRoutes from './main.routes'
+import mobileRoutes from './mobile.routes'
 
 const Layout = () => {
+    const [width, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        updateDimensions();
+        window.addEventListener("resize", updateDimensions);
+        return () =>
+            window.removeEventListener("resize", updateDimensions);
+    }, [])
+
+
+    const updateDimensions = () => {
+        const width = window.innerWidth
+        setWindowWidth(width)
+    }
+
+
     return (
         <div className={styles.layout}>
             <nav className={styles.navbar}>
@@ -14,7 +31,7 @@ const Layout = () => {
                 <span className={styles.logout2}>
                     <i className='fas fa-sign-out fa-lg'></i>
                 </span>
-                
+
             </nav>
             <div className={styles.main}>
                 <aside>
@@ -22,8 +39,15 @@ const Layout = () => {
                         Navigation
                     </span>
                     <ul>
-                        {
+                        {  width >= 884 &&
                             appRoutes?.map((appR, index) => {
+                                return (
+                                    <li><NavLink key={index} to={appR.path} className={props => (props.isActive ? `${styles.navLink} ${styles.active}` : styles.navLink)}>{appR.name}</NavLink></li>
+                                )
+                            })
+                        }
+                        {  (width < 884) &&
+                            mobileRoutes?.map((appR, index) => {
                                 return (
                                     <li><NavLink key={index} to={appR.path} className={props => (props.isActive ? `${styles.navLink} ${styles.active}` : styles.navLink)}>{appR.name}</NavLink></li>
                                 )
@@ -33,8 +57,13 @@ const Layout = () => {
                 </aside>
                 <section>
                     <Routes>
-                        {
-                            appRoutes?.map((appR,index)=>{
+                        {   width >= 884 &&
+                            appRoutes?.map((appR, index) => {
+                                return <Route key={index} path={appR.path} element={appR.element} />
+                            })
+                        }
+                        {   (width < 884) &&
+                            mobileRoutes?.map((appR, index) => {
                                 return <Route key={index} path={appR.path} element={appR.element} />
                             })
                         }

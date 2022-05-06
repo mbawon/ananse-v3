@@ -5,9 +5,17 @@ import loggerMiddleware from '../middleware/logger'
 import monitorReducerEnhancer from '../enhancers/monitorReducer'
 import storage from 'redux-persist/lib/storage/session'
 import login from '../features/login.feature';
+import user from '../features/user.feature';
+import region from '../features/region.feature';
+import zone from '../features/zone.feature';
+import area from '../features/area.feature';
 
 const rootReducer = combineReducers({
-  login
+  login,
+  user,
+  region,
+  zone,
+  area,
 });
 
 const middlewares = [loggerMiddleware, thunkMiddleware]

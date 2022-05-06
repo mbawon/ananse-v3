@@ -2,14 +2,12 @@ import React, { Fragment, useState } from 'react'
 import styles from './dashboard.module.css'
 import allStyles from '../assets/css/all-styles.module.css'
 import CustomMap from './CustomMap'
-
-import voda from '../assets/images/Marker_Vodafone.png'
-import potential from '../assets/images/Marker_Potential.png'
-import dps from '../assets/images/Marker_DP.png'
-import BottomModal from '../modal/BottomModal'
+import moment from 'moment'
 import BottomNav from '../bottonNav/BottomNav'
 import Business from '../business/Business'
-
+// import voda from '../assets/images/Marker_Vodafone.png'
+// import potential from '../assets/images/Marker_Potential.png'
+// import dps from '../assets/images/Marker_DP.png'
 
 const Dashboard = () => {
     const [ switchView, setSwitchView ] = useState("map")
@@ -48,9 +46,10 @@ const Dashboard = () => {
             </div>}
 
             <div className={allStyles.page__footer}>
-                <span style={{ alignSelf: "center", marginLeft: "auto", fontSize: 14 }}><img src={voda} width="15" /> Vodafone: 200</span>
-                <span style={{ alignSelf: "center", marginLeft: 50, marginRight: 50, fontSize: 14 }}><img src={potential} width="15" /> Potential: 200</span>
-                <span style={{ alignSelf: "center", marginRight: "auto", fontSize: 14 }}><img src={dps} width="15" /> DPS: 500</span>
+                <span style={{margin:"auto", fontSize:12}}>&copy; {moment().year()} Vodafone Ghana</span>
+                {/* <span style={{ alignSelf: "center",  fontSize: 14 }}><img src={voda} width="15" /> Vodafone: 200</span>
+                <span style={{ alignSelf: "center",  marginRight: 50, fontSize: 14 }}><img src={potential} width="15" /> Potential: 200</span>
+                <span style={{ alignSelf: "center", fontSize: 14 }}><img src={dps} width="15" /> DPS: 500</span> */}
             </div>
 
             { <BottomNav /> }

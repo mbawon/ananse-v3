@@ -7,7 +7,7 @@
 }
 
 .divider {
-  padding: 0 10px;
+  width: 10px;
 }
 
 .row2 {
@@ -180,6 +180,24 @@ th {
   height: 28px;
   margin-right: 10px;
   padding: 0 0 0 10px;
+}
+
+.tab-list {
+  border-bottom: 1px solid #ccc;
+  padding-left: 0;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.75rem;
+}
+
+.tab-list-active {
+  background-color: white;
+  border: solid #ccc;
+  border-width: 1px 1px 0 1px;
 }
 
 .loader {
