@@ -9,12 +9,12 @@ const mainRoutes = [
     {
         name: "Dashboard",
         path: "/",
-        element: <Dashboard />
+        element: <Reports />
     },
     {
-        name: "Reports",
-        path: "/reports",
-        element: <Reports />
+        name: "Businesses",
+        path: "/businesses",
+        element: <Dashboard />
     },
     {
         name: "Regions",

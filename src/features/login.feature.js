@@ -5,6 +5,9 @@ const loginFeature = createSlice({
     name: "login",
     initialState: {
         user: "",
+        regions: [],
+        zones: [],
+        areas: [],
         publicKey: ""
     },
     reducers: {

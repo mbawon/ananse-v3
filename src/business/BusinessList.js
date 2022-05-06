@@ -60,6 +60,7 @@ let data = [
 
 const BusinessList = () =>{
     const [ btnNav, setBtnNav ] = useState(true)
+    const [searchModal, setSearchModal] = useState(false)
     const [ viewBusiness, setViewBusiness ] = useState(false)
     const [ business, setBusiness ] = useState([])
 
@@ -70,6 +71,26 @@ const BusinessList = () =>{
 
     return(
         <Fragment>
+
+            {searchModal &&
+                <BottomModal title="Search" toggleModal={() => setSearchModal(false)}>
+                    <div style={{ padding: 15 }}>
+                        <select className='input__control' style={{ backgroundColor: "white" }}>
+                            <option value="">Location</option>
+                        </select>
+                        <br />
+                        <br />
+                        <select className='input__control' style={{ backgroundColor: "white" }}>
+                            <option value="">Category</option>
+                        </select>
+                        <br />
+                        <br />
+                        <button style={{ width: "100%", padding: 20, fontSize: 18, color: "white", backgroundColor: "red", border: "none" }}>
+                            SEARCH
+                        </button>
+                    </div>
+                </BottomModal>
+            }
 
             {viewBusiness && 
                 <BottomModal title="Details" toggleModal={() => setViewBusiness(false)}>
@@ -86,6 +107,7 @@ const BusinessList = () =>{
                 <div style={{position:"relative", padding:15}}>
                     <input type="text" placeholder='Search' className="input__control" style={{paddingLeft:50}} onFocus={()=>setBtnNav(false)} onBlur={()=>setBtnNav(true)} />
                     <i className='fas fa-search fa-lg' style={{position:"absolute", left:30, top:38}}></i>
+                    <i onClick={()=>setSearchModal(true)} className='fas fa-sliders fa-lg' style={{position:"absolute", right:35, top:38}}></i>
                 </div>
                 <div style={{height:"100%", overflowY:"auto",paddingBottom:90}}>
                     {

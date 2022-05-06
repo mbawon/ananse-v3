@@ -1,7 +1,7 @@
 .modal {
   position: fixed;
   z-index: 999999999;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   left: 0;
   top: 0;
   width: 100%;
@@ -15,7 +15,7 @@
   height: auto;
   position: relative;
   background-color: #fefefe;
-  margin: 0px auto;
+  margin: auto;
   padding: 0;
   border: 1px solid #888;
   /* border-radius: 10px; */

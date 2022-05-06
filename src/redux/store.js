@@ -9,6 +9,7 @@ import user from '../features/user.feature';
 import region from '../features/region.feature';
 import zone from '../features/zone.feature';
 import area from '../features/area.feature';
+import statistic from '../features/statistic.feature';
 
 const rootReducer = combineReducers({
   login,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   region,
   zone,
   area,
+  statistic
 });
 
 const middlewares = [loggerMiddleware, thunkMiddleware]
@@ -26,7 +28,7 @@ const composedEnhancers = compose(...enhancers)
 
 const persistConfig = {
   key: 'root',
-  whitelist:['auth'],
+  whitelist:['login'],
   storage: storage,
 };
 

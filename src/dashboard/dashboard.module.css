@@ -25,16 +25,13 @@
     padding: 0 10px
 }
 .searchBtn{ 
-    align-self: center;
     height: 29px;
     margin-left: 15px;
     cursor: pointer;
     color: white;
     background-color: red;
-    padding: 5px 15px;
-    border-radius: 3;
-    font-weight: bolder;
-    font-size: 14 
+    padding: 5px 10px;
+    border-radius: 3px;
 }
 
 .profile2{

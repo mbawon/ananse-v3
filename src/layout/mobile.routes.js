@@ -1,6 +1,7 @@
 import BusinessList from "../business/BusinessList"
 import CustomerList from "../customer/CustomerList"
 import Dashboard from "../dashboard/Dashboard"
+import Profile from "../profile/Profile"
 
 const mobileRoutes = [
     {
@@ -17,6 +18,11 @@ const mobileRoutes = [
         name: "My Customers",
         path: "/my-customers",
         element: <CustomerList />
+    },
+    {
+        name: "Profile",
+        path: "/profile",
+        element: <Profile />
     }
 ]
 

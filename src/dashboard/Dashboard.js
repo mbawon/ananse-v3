@@ -1,16 +1,17 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import styles from './dashboard.module.css'
 import allStyles from '../assets/css/all-styles.module.css'
 import CustomMap from './CustomMap'
 import moment from 'moment'
 import BottomNav from '../bottonNav/BottomNav'
 import Business from '../business/Business'
-// import voda from '../assets/images/Marker_Vodafone.png'
-// import potential from '../assets/images/Marker_Potential.png'
-// import dps from '../assets/images/Marker_DP.png'
 
 const Dashboard = () => {
     const [ switchView, setSwitchView ] = useState("map")
+
+    useEffect(()=>{
+        
+    },[])
 
     const handleView = (param) =>{
         setSwitchView(param)
@@ -20,7 +21,7 @@ const Dashboard = () => {
         <Fragment>
 
             <div className={allStyles.page__header}>
-                <span className={allStyles.pageTitle}>Dashboard</span>
+                <span className={allStyles.pageTitle}>Businesses</span>
                 <span onClick={()=>handleView("map")} className={styles.mapView} style={{borderBottom:switchView === "map" ? "2px solid red": undefined}}>Map view</span>
                 <span onClick={()=>handleView("table")} className={styles.mapView} style={{borderBottom:switchView === "table" ? "2px solid red": undefined}}>Table view</span>
 
