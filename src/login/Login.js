@@ -44,13 +44,13 @@ const Login = () => {
 
         try {
             const resp = await axios.get(`https://ananse.internal.vodafone.com/service/api/v2/auth/${credential.username}/key`)
-            console.log(resp.key)
+            console.log("public key====>",resp.key)
             const genPass = Math.random().toString(36).slice(2, 15)
-
             const encryptedAES = AES.encrypt(genPass, resp.key)
+            console.log("Encrypted AES key====>", encryptedAES)
             const loginCredentials = AES.encrypt(credential, encryptedAES)
+            console.log("Login credentials encrypted====>",loginCredentials)
             dispatch(login({ username:credential.username, key: encryptedAES, data: loginCredentials }))
-
         } catch (error) {
             setKeyError("Login failed. Try again")        
             const timmer = setTimeout(() => {
